@@ -1,0 +1,34 @@
+<h2>The uk team on the rota this week: <%=@first_uk_team%></h2>
+<h2>The uk team on the rota this week: <%=@first_us_team%></h2>
+<br>
+
+<a href="/new_uk">Add a new uk team</a>
+<br>
+<a href="/new_us">Add a new us team</a>
+<br>
+<a href="/swap_uk">Swap a shift</a>
+
+<h1>Uk team rota</h1>
+<ul>
+  <%@uk_team_rota.each do |team|%>
+  <h3><%=team.date.strftime("%d/%m/%Y")%></h3>
+    <li><%=team.uk_team_name.capitalize%></li>
+    <form method="post" action="/<%=team.id%>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="remove entry">
+    </form>
+  <%end%>
+</ul>
+<br>
+
+  <h1>US team rota</h1>
+  <ul>
+    <%@us_team_rota.each do |team|%>
+    <h3><%=team.date.strftime("%d/%m/%Y")%></h3>
+      <li><%=team.us_team_name.capitalize%></li>
+      <form method="post" action="/<%=team.id%>">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="remove entry">
+      </form>
+    <%end%>
+  </ul>

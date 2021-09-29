@@ -1,0 +1,1 @@
+<h3><%=team.date.strftime("%d/%m/%Y")%></h3>
